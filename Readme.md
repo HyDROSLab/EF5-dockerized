@@ -9,8 +9,8 @@
   - [General Information](#general-information)
 - [Docker](#docker)
   - [Installing Docker](#installing-docker)
-    - [Docker Desktop](#docker-desktop)
-    - [Docker Engine](#docker-engine)
+    - [Docker Desktop (Win, MacOS)](#docker-desktop-win-macos)
+    - [Docker Engine (Linux)](#docker-engine-linux)
 - [Dockerized EF5](#dockerized-ef5)
   - [Download this repository](#download-this-repository)
     - [GIT](#git)
@@ -67,11 +67,11 @@ Please follow the [official Docker documentation](https://docs.docker.com/get-do
 >![Mac Intel Chip or Apple Silicon](./docs/img/1-DockerMac_IntelApple.png)  
 *Docker Documentation - Mac Intel Chip or Apple Silicon*
 
-### Docker Desktop
+### Docker Desktop (Win, MacOS)
 - [Windows](https://docs.docker.com/desktop/install/windows-install/)
 - [Mac](https://docs.docker.com/desktop/install/mac-install/)
 
-### Docker Engine
+### Docker Engine (Linux)
 - [Linux](https://docs.docker.com/engine/install/)
 
 >If you have any troubles installing Docker on you machine, please refer to the Official Docker documentation, or to the [Troubleshooting](#troubleshooting) section at the end of this Readme file.
