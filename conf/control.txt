@@ -17,7 +17,7 @@ TYPE=TIF
 TYPE=MRMS
 UNIT=mm/h
 FREQ=2u
-LOC=preciprate/
+LOC=/data/precip/
 NAME=PRECIPRATE.YYYYMMDD.HHUU00.gz
 
 [Gauge 0]
@@ -29,7 +29,7 @@ outputts=false
 [Basin 0]
 gauge=0
 
-[CrestParamSet ABRFC]
+[CrestParamSet EF5US]
 wm_grid=/data/parameters/CREST/wm_usa.tif
 im_grid=/data/parameters/CREST/im_usa.tif
 fc_grid=/data/parameters/CREST/ksat_usa.tif
@@ -42,7 +42,7 @@ ke=1.0
 fc=1.00 
 iwu=75.0
 
-[KWParamSet ABRFC]
+[KWParamSet EF5US]
 under_grid=/data/parameters/KW/ksat_usa.tif
 leaki_grid=/data/parameters/KW/leaki_usa.tif
 alpha_grid=/data/parameters/KW/alpha_usa.tif
@@ -57,7 +57,7 @@ leaki=1.0
 th=10.0
 isu=00.0
 
-[Task Simu]
+[Task Simulation]
 STYLE=simu
 MODEL=crest
 ROUTING=KW
@@ -67,14 +67,14 @@ PET=CLIMO
 OUTPUT=/results
 STATES=/data/states
 defaultparamsgauge=0
-PARAM_SET=Abrfc
-ROUTING_PARAM_Set=abrfc
+PARAM_SET=EF5US
+ROUTING_PARAM_Set=EF5US
 output_grids=MAXUNITSTREAMFLOW|MAXSTREAMFLOW
 TIMESTEP=5u
-TIME_BEGIN=201012312355
-TIME_WARMEND=201012312355
-#TIME_STATE=201112312355
-TIME_END=201201010000
+TIME_BEGIN=20170519180000
+#TIME_WARMEND=20170519180000
+TIME_STATE=20170519190000
+TIME_END=20170519190000
 
 [Execute]
-task=Simu
+task=Simulation
