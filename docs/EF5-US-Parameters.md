@@ -11,10 +11,9 @@ Analysis of simulations based on these parameters were also featured in EF5's pu
 Parameters included correspond to the following models:
 
 - Coupled Routing and Excess STorage (CREST)
-- Sacramento Soil Moisture Accounting (SAC-SMA)
 - Kinematic Wave (KW)
 - Linear Reservoirs (LR)
 
 Digital Elevation Model (DEM) data and its derivatives (Flow direction and accumulation), and potential evapotranspiration (PET) monthly estimates are also included.
 
-EF5 configuration files for CREST+KW+LR and SAC-SMA+KW+LR are also included.
+EF5 configuration files for CREST+KW+LR are also included.
