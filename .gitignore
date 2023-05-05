@@ -1,19 +1,8 @@
 # Git Inore File
+# Each 'empty' folder has a .gitkeep file
 
 # VisualStudio Code Files
 .vscode
-
-# Ignore all files in the ./conf folder, but keep the folder's structure
-# Each 'empty' folder has a .gitkeep file
-conf/*.txt
-
-# Ignore all files in the ./data folder, but keep the folder's structure
-# Each 'empty' folder has a .gitkeep file
-data/basic/*.tif
-data/parameters/*.tif
-data/pet/*.tif
-data/precip/*.tif
-data/states/*.tif
 
 # Ignore all files in the ./results folder, but keep the folder's structure
 # Each 'empty' folder has a .gitkeep file

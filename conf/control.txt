@@ -1,0 +1,80 @@
+[Basic]
+DEM=/data/basic/dem_usa.tif
+DDM=/data/basic/fdir_usa.tif
+FAM=/data/basic/facc_usa.tif
+PROJ=geographic
+ESRIDDM=true 
+SelfFAM=false
+
+[PETForcing CLIMO]
+LOC=/data/pet/
+FREQ=1m
+UNIT=mm/d
+NAME=PET_MM_usa.tif
+TYPE=TIF
+
+[PrecipForcing MRMS]
+TYPE=MRMS
+UNIT=mm/h
+FREQ=2u
+LOC=preciprate/
+NAME=PRECIPRATE.YYYYMMDD.HHUU00.gz
+
+[Gauge 0]
+cellx=3879
+celly=2542
+outputts=false
+#basinarea=
+
+[Basin 0]
+gauge=0
+
+[CrestParamSet ABRFC]
+wm_grid=/data/parameters/CREST/wm_usa.tif
+im_grid=/data/parameters/CREST/im_usa.tif
+fc_grid=/data/parameters/CREST/ksat_usa.tif
+b_grid=/data/parameters/CREST/b_usa.tif
+gauge=0
+wm=1.0
+b=1.0
+im=0.01 
+ke=1.0
+fc=1.00 
+iwu=75.0
+
+[KWParamSet ABRFC]
+under_grid=/data/parameters/KW/ksat_usa.tif
+leaki_grid=/data/parameters/KW/leaki_usa.tif
+alpha_grid=/data/parameters/KW/alpha_usa.tif
+beta_grid=/data/parameters/KW/beta_usa.tif
+alpha0_grid=/data/parameters/KW/alpha0_usa.tif
+gauge=0
+alpha0=1.0
+alpha=1.0
+beta=1.0
+under=0.0001
+leaki=1.0
+th=10.0
+isu=00.0
+
+[Task Simu]
+STYLE=simu
+MODEL=crest
+ROUTING=KW
+BASIN=0
+PRECIP=MRMS
+PET=CLIMO
+OUTPUT=/results
+STATES=/data/states
+defaultparamsgauge=0
+PARAM_SET=Abrfc
+ROUTING_PARAM_Set=abrfc
+output_grids=MAXUNITSTREAMFLOW|MAXSTREAMFLOW
+TIMESTEP=5u
+TIME_BEGIN=201012312355
+TIME_WARMEND=201012312355
+#TIME_STATE=201112312355
+TIME_END=201201010000
+
+[Execute]
+task=Simu
