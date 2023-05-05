@@ -1,7 +1,7 @@
 [Basic]
-DEM=/data/basic/dem_usa.tif
-DDM=/data/basic/fdir_usa.tif
-FAM=/data/basic/facc_usa.tif
+DEM=/data/basic/dem.tif
+DDM=/data/basic/fdir.tif
+FAM=/data/basic/facc.tif
 PROJ=geographic
 ESRIDDM=true 
 SelfFAM=false
@@ -10,7 +10,7 @@ SelfFAM=false
 LOC=/data/pet/
 FREQ=1m
 UNIT=mm/d
-NAME=PET_MM_usa.tif
+NAME=PET.tif
 TYPE=TIF
 
 [PrecipForcing MRMS]
@@ -30,17 +30,17 @@ outputts=true
 gauge=0
 
 [SacParamSet EF5US]
-UZTWM_grid=/data/parameters/SAC/uztwm_usa.tif
-UZFWM_grid=/data/parameters/SAC/uzfwm_usa.tif
-UZK_grid=/data/parameters/SAC/uzk_usa.tif
-ZPERC_grid=/data/parameters/SAC/zperc_usa.tif
-REXP_grid=/data/parameters/SAC/rexp_usa.tif
-LZTWM_grid=/data/parameters/SAC/lztwm_usa.tif
-LZFSM_grid=/data/parameters/SAC/lzfsm_usa.tif
-LZFPM_grid=/data/parameters/SAC/lzfpm_usa.tif
-LZSK_grid=/data/parameters/SAC/lzsk_usa.tif
-LZPK_grid=/data/parameters/SAC/lzpk_usa.tif
-PFREE_grid=/data/parameters/SAC/pfree_usa.tif
+UZTWM_grid=/data/parameters/SAC/uztwm.tif
+UZFWM_grid=/data/parameters/SAC/uzfwm.tif
+UZK_grid=/data/parameters/SAC/uzk.tif
+ZPERC_grid=/data/parameters/SAC/zperc.tif
+REXP_grid=/data/parameters/SAC/rexp.tif
+LZTWM_grid=/data/parameters/SAC/lztwm.tif
+LZFSM_grid=/data/parameters/SAC/lzfsm.tif
+LZFPM_grid=/data/parameters/SAC/lzfpm.tif
+LZSK_grid=/data/parameters/SAC/lzsk.tif
+LZPK_grid=/data/parameters/SAC/lzpk.tif
+PFREE_grid=/data/parameters/SAC/pfree.tif
 gauge=0
 UZTWM=1.0
 UZFWM=1.0
@@ -66,10 +66,10 @@ LZFSC=0.11
 LZFPC=0.46
 
 [CrestParamSet EF5US]
-wm_grid=/data/parameters/CREST/wm_usa.tif
-im_grid=/data/parameters/CREST/im_usa.tif
-fc_grid=/data/parameters/CREST/ksat_usa.tif
-b_grid=/data/parameters/CREST/b_usa.tif
+wm_grid=/data/parameters/CREST/wm.tif
+im_grid=/data/parameters/CREST/im.tif
+fc_grid=/data/parameters/CREST/ksat.tif
+b_grid=/data/parameters/CREST/b.tif
 gauge=0
 wm=1.0
 b=1.0
@@ -79,11 +79,11 @@ fc=1.00
 iwu=75.0
 
 [KWParamSet EF5US]
-under_grid=/data/parameters/KW/ksat_usa.tif
-leaki_grid=/data/parameters/KW/leaki_usa.tif
-alpha_grid=/data/parameters/KW/alpha_usa.tif
-beta_grid=/data/parameters/KW/beta_usa.tif
-alpha0_grid=/data/parameters/KW/alpha0_usa.tif
+under_grid=/data/parameters/KW/ksat.tif
+leaki_grid=/data/parameters/KW/leaki.tif
+alpha_grid=/data/parameters/KW/alpha.tif
+beta_grid=/data/parameters/KW/beta.tif
+alpha0_grid=/data/parameters/KW/alpha0.tif
 gauge=0
 alpha0=1.0
 alpha=1.0
