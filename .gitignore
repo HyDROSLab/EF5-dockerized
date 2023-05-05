@@ -1,5 +1,8 @@
 # Git Inore File
 
+# VisualStudio Code Files
+.vscode
+
 # Ignore all files in the ./conf folder, but keep the folder's structure
 # Each 'empty' folder has a .gitkeep file
 conf/*.txt
