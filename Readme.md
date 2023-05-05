@@ -1,6 +1,8 @@
 # `Dockerized` Ensemble Framework For Flash Flood Forecasting (EF5)  
 
-*Containerized* (Docker) version of **EF5**, which enables users to easily build, configure and run EF5 on their local machines.
+*Containerized* (Docker) version of **[EF5](https://github.com/HyDROSLab/EF5)**, which enables users to easily build, configure and run EF5 on their local machines.
+
+# Table of Contents 
 
 ## General Information
 
@@ -93,13 +95,13 @@ At this point, you have successfully managed to install Docker Desktop on your s
 
 ### Building the EF5 container image
 
-Before running the EF5 container, **its Docker image must be _built_**. Through his process, which is defined in the project's [Dockerfile](./docker/Dockerfile) which will:
+Before running the EF5 container, **its Docker image must be _built_**. Through this process, which is defined in the project's [Dockerfile](./docker/Dockerfile), the Docker Engine will:
 
 1. Download a [base Linux image](https://hub.docker.com/_/alpine) from [DockerHub](https://hub.docker.com/)
 2. Mount the following project folders so that our container can read and write data to and from the host machine:
-    - `./conf` -> `/conf`
-    - `./data` -> `/data`
-    - `./results` -> `/results`
+    - `.\conf` -> `/conf`
+    - `.\data` -> `/data`
+    - `.\results` -> `/results`
 3. Update the software repositories on the container, and install the following packages:
     - software building tools: `git`, `automake`, `autoconf`, and `build-base`
     - EF5 dependencies like `libgeotiff-dev`
@@ -109,8 +111,8 @@ Before running the EF5 container, **its Docker image must be _built_**. Through 
 
 To build the EF5 container, use your file explorer to navigate to the project's main folder. Once there, navigate into the `docker/` folder; here you will find the following three files:
 
-![Windows Explorer - ./docker/ directory](./docs/img/Windows/5-Build_BatchScript1.PNG)
-*Windows Explorer - ./docker/ directory*
+![Windows Explorer - .\docker/ directory](./docs/img/Windows/5-Build_BatchScript1.PNG)
+*Windows Explorer - .\docker/ directory*
 
 >**NOTE**: Note that there are two different build scripts: a *BASH script* (ending in `.sh`, meant to be used on Linux and MacOS systems), and a a *BATCH script* (ending in `.bat`, meant to be used on Windows systems)
 
@@ -132,10 +134,10 @@ At this point, the EF5 Docker image has been build, and it is ready to be execut
 
 After [building the EF5 container image](#building-the-ef5-container-image), and assuming that:
 
-- you have valid input data and states in your `./data/` folder, and
-- you have a valid EF5 configuration file in you `./conf/` folder, **named** `control.txt`,
+- you have valid input data and states in your `.\data\` folder, and
+- you have a valid EF5 configuration file in you `.\conf\` folder, **named** `control.txt`,
 
-you should be able to use the script `./run_ef5_container.bat` to execute your EF5 model simulation.
+you should be able to use the script `.\run_ef5_container.bat` to execute your EF5 model simulation.
 
 #### **USING THE [run_ef5_container.bat](./run_ef5_container.bat) SCRIPT**
 
@@ -143,6 +145,8 @@ To run the EF5 container, use your file explorer to navigate to the project's ma
 
 ![Windows Explorer - Project directory](./docs/img/Windows/6-Run_BatchScript1.PNG)
 **Windows Explorer - Project directory
+
+>**NOTE**: Note that there are two different run scripts: a *BASH script* (ending in `.sh`, meant to be used on Linux and MacOS systems), and a a *BATCH script* (ending in `.bat`, meant to be used on Windows systems)
 
 Double click on the *BATCH FILE* named [run_ef5_container.bat](./run_ef5_container.bat) to start the execution process. A command line window will open, and you will see some output showing the process as EF5 is being executed with your control file, parameters, data, and states:
 
@@ -154,14 +158,149 @@ Once the EF5 execution is done, you will see the output cease to appear on the c
 ![Command Line - EF5 Done](./docs/img/Windows/6b-Run_BatchScript3.PNG)
 *Command Line - EF5 Done*
 
-You can locate the resulting outputs from your EF5 execution under the [./results/](./results/) folder in the project's main directory:
+You can locate the resulting outputs from your EF5 execution under the [.\results\](./results/) folder in the project's main directory:
 
 ![Windows Explorer - Results outputs](./docs/img/Windows/7-Results_FileExplorer.PNG)
 *Windows Explorer - Results outputs*
 
+>**NOTE**: If you configured your EF5 control file to produce `states`, these files will be saved in the following sub-directory [.\data\states\](./data/states/).
+
+After you have executed the EF5 Docker container, you will notice that your Docker Desktop window will show a container that was built and ran (with an arbitrary name) within the `Containers` pane:
+
+![Docker Desktop - Containers](./docs/img/Windows/8-Run_DockerDesktop_Containers1.PNG)
+*Docker Desktop - Containers*
+
+Note that multiple executions may produce multiple `container` items in your Docker Desktop window. You can delete these as you perform new executions of your simulations:
+
+![Docker Desktop - Multiple Containers](./docs/img/Windows/8a-Run_DockerDesktop_Containers2.PNG)
+*Docker Desktop - Multiple Containers*
+
+## MacOS
+
+Once Docker Desktop is installed, you will be requested to accept the `Docker Subscription Service Agreement`.
+
+![Docker Desktop - Agreement](./docs/img/Mac/1-DockerFirstStart_Agree.png)  
+*Docker Desktop - Accept the Service Agreement*
+
+Note that **if you do not accept these terms, you will not be able to use Docker Desktop**. Since you are likely using Docker Desktop for personal use, you won't need to pay for a Docker license. After accepting the license terms, your Docker Desktop window will ask you to *complete the installation*, where you can select to use the `recommended settings`:
+
+![Docker Desktop - Setup](./docs/img/Mac/2-DockerFirstStart_Setup.png)
+*Docker Desktop - Setup*
+
+Then, you may be asked to complete a small survey indicating the type of role you play, and your intended use for Docker. You can submit this information or skip this step:
+
+![Docker Desktop - Role](./docs/img/Mac/3-DockerFirstStart_Role.png)
+*Docker Desktop - Role*
+
+Once you have completed the previous steps, you will see the default Docker Desktop interface, without any configured containers, images or volumes:
+
+![Docker Desktop - First Run](./docs/img/Mac/4-DockerDesktop.png)
+*Docker Desktop - Up and Running*
+
+At this point, you have successfully managed to install Docker Desktop on your system, and now can proceed to [build the EF5 container](#building-the-ef5-container-image-1). Once the container's image has been built, you can proceed to [run the EF5 container](#running-the-ef5-container-image-1).
+
+> **NOTE**: you should keep in mind that by *just* running the EF5 container, without having customized your *configuration file*, and added some *data*, your model's execution won't produce any relevant *outputs*. Refer to the [EF5 manual](./docs/manual.html) for further information.
+
+### Building the EF5 container image
+
+Before running the EF5 container, **its Docker image must be _built_**. Through this process, which is defined in the project's [Dockerfile](./docker/Dockerfile), the Docker Engine will:
+
+1. Download a [base Linux image](https://hub.docker.com/_/alpine) from [DockerHub](https://hub.docker.com/)
+2. Mount the following project folders so that our container can read and write data to and from the host machine:
+    - `./conf` -> `/conf`
+    - `./data` -> `/data`
+    - `./results` -> `/results`
+3. Update the software repositories on the container, and install the following packages:
+    - software building tools: `git`, `automake`, `autoconf`, and `build-base`
+    - EF5 dependencies like `libgeotiff-dev`
+4. Compile and install EF5 on the container using the `autoreconf` and `make` commands.
+
+#### **USING THE [build_ef5_container.sh](./docker/build_ef5_container.sh) SCRIPT**
+
+To build the EF5 container, use your **Terminal** to navigate to the project's main folder. The following code example assumes the project's folder will be located on your `~/Downloads/` folder, within your home directory:
+
+``` bash
+[~]$> cd ~/Downloads/ef5-dockerized-main/
+[ef5-dockerized]$>
+```
+
+Once there, navigate into the `docker/` folder:
+
+``` bash
+[ef5-dockerized]$> cd docker
+[ef5-dockerized/docker]$>
+```
+
+>**NOTE**: Note that there are two different build scripts: a *BASH script* (ending in `.sh`, meant to be used on Linux and MacOS systems), and a a *BATCH script* (ending in `.bat`, meant to be used on Windows systems)
+
+Once there, execute the *BASH FILE* named [build_ef5_container.sh](./docker/build_ef5_container.sh) to start the build process:
+
+``` bash
+[ef5-dockerized/docker]$> bash build_ef5_container.sh
+```
+
+Once the process starts, you will see some output showing the process as Docker builds the image:
+
+![Command Line - Docker Build](./docs/img/Mac/5-Terminal_DockerBuild.png)
+*Command Line - Docker Build*
+
+Assuming no errors are shown on the terminal window, and you see a prompt to *press any key*, the EF5 container image should have been built successfully. You can press any key, which will close the command line window once the building process is done.
+
+You can verify that the `ef5-container` image has been built, by checking on the `Images` pane in your Docker Desktop main window:
+
+![Docker Desktop - Images](./docs/img/Windows/5b-Build_DockerDesktop_Images.PNG)
+*Docker Desktop - Images*
+
+At this point, the EF5 Docker image has been build, and it is ready to be executed.
+
+### Running the EF5 container image
+
+After [building the EF5 container image](#building-the-ef5-container-image-1), and assuming that:
+
+- you have valid input data and states in your `./data/` folder, and
+- you have a valid EF5 configuration file in you `./conf/` folder, **named** `control.txt`,
+
+you should be able to use the script `./run_ef5_container.sh` to execute your EF5 model simulation.
+
+#### **USING THE [run_ef5_container.sh](./run_ef5_container.sh) SCRIPT**
+
+To run the EF5 container, use your **Terminal** to navigate to the project's main folder. The following code example assumes the project's folder will be located on your `~/Downloads/` folder, within your home directory:
+
+``` bash
+[~]$> cd ~/Downloads/ef5-dockerized-main/
+[ef5-dockerized]$>
+```
+
+>**NOTE**: Note that there are two different run scripts: a *BASH script* (ending in `.sh`, meant to be used on Linux and MacOS systems), and a a *BATCH script* (ending in `.bat`, meant to be used on Windows systems)
+
+Once there, execute the *BASH FILE* named [run_ef5_container.sh](./docker/build_ef5_container.sh) to start the execution of the container:
+
+``` bash
+[ef5-dockerized]$> bash run_ef5_container.sh
+```
+
+Once the process starts, you will see some output showing the process as Docker runs the container.
+
+![Command Line - Docker Run](./docs/img/Mac/6-Terminal_DockerRun.png)
+*Command Line - Docker Run*
+
+You will see some output showing the process as EF5 is being executed with your control file, parameters, data, and states:
+
+![Command Line - EF5 Execution](./docs/img/Linux/2-Run_ShellScript1.png)
+*Command Line - EF5 Execution*
+
+Once the EF5 execution is done, you will see the output cease to appear on the command line window:
+
+![Command Line - EF5 Done](./docs/img/Linux/3-Run_ShellScript2.png)
+*Command Line - EF5 Done*
+
+You can locate the resulting outputs from your EF5 execution under the [./results/](./results/) folder in the project's main directory:
+
+![Command Line - Results](./docs/img/Linux/4-Run_Results.png)
+*Command Line - Results*
+
 >**NOTE**: If you configured your EF5 control file to produce `states`, these files will be saved in the following sub-directory [./data/states/](./data/states/).
 
-After you have executed the EF5 Docker container, you will notice that your Docker Desktop window, under the `
 After you have executed the EF5 Docker container, you will notice that your Docker Desktop window will show a container that was built and ran (with an arbitrary name) within the `Containers` pane:
 
 ![Docker Desktop - Containers](./docs/img/Windows/8-Run_DockerDesktop_Containers1.PNG)
@@ -171,12 +310,6 @@ Note that multiple executions may produce multiple `container` items in your Doc
 
 ![Docker Desktop - Multiple Containers](./docs/img/Windows/8a-Run_DockerDesktop_Containers2.PNG)
 *Docker Desktop - Multiple Containers*
-
-## MacOS
-
-### Building the EF5 container image
-
-### Running the EF5 container image
 
 ## Linux
 
