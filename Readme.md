@@ -45,8 +45,13 @@ The EF5 installation will be placed in the path `/ef5` **WITHIN THE RUNNING CONT
 
 When this image is used to run a container, it will mount the following project folders, and make them available to the running image:
 - **[./conf](./conf)** [RO]: where the running EF5 instance will look for a control file named [control.txt](./conf/control.txt) (*the control file __MUST__ be named `control.txt` for the default container configuration to work*). Further information regarding control files can be found in the [EF5 manual](./docs/manual.html). `This project folder will be mounted on the container using read-only permissions, since EF5 only needs to read the control file.`
+
+  > This project ships with a *skeleton* configuration file containing all the necessary configuration and tasks blocks, pre-mapped to the included EF5 parameters in the project. **YOU WILL NEED TO PROVIDE MORE CONFIGURATIONS AND DATA TO RUN YOUR OWN SIMULATIONS!s**
+
 - **[./data](./data)** [RW]: where the running EF5 instance will look for data such as flow accumulation grids, digital elevation data, flow direction grids, kinematic wave parameter maps, and precipitation data. `This project folder will be mounted on the container using read-write permissions, since EF5 must be able to write outputs to the /data/states folder`
 - **[./results](./results/)** [RW]: where the running EF5 instance will write model results and state outputs, so that the user can retain a copy of these results on the host machine once the container finishes running EF5. `This project folder will be mounted on the container using read-write permissions, since EF5 must be able to write outputs to this folder.`
+
+> **NOTE**: This project ships with some basic parameters for running EF5 in the US domain. Some documentation on them is provided in the [EF5-US-Parameters.md](./docs/EF5-US-Parameters.md) file. These files were taken from the [EF5-US-Parameters](https://github.com/HyDROSLab/EF5-US-Parameters) repository on Github.
 
 # Docker
 
