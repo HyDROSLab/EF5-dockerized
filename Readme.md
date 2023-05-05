@@ -4,6 +4,40 @@
 
 # Table of Contents 
 
+- [`Dockerized` Ensemble Framework For Flash Flood Forecasting (EF5)](#dockerized-ensemble-framework-for-flash-flood-forecasting-ef5)
+- [Table of Contents](#table-of-contents)
+  - [General Information](#general-information)
+- [Docker](#docker)
+  - [Installing Docker](#installing-docker)
+    - [Docker Desktop](#docker-desktop)
+    - [Docker Engine](#docker-engine)
+- [Dockerized EF5](#dockerized-ef5)
+  - [Download this repository](#download-this-repository)
+    - [GIT](#git)
+    - [Download a ZIP file](#download-a-zip-file)
+  - [Windows](#windows)
+    - [Building the EF5 container image](#building-the-ef5-container-image)
+      - [**USING THE build\_ef5\_container.bat SCRIPT**](#using-the-build_ef5_containerbat-script)
+    - [Running the EF5 container image](#running-the-ef5-container-image)
+      - [**USING THE run\_ef5\_container.bat SCRIPT**](#using-the-run_ef5_containerbat-script)
+  - [MacOS](#macos)
+    - [Building the EF5 container image](#building-the-ef5-container-image-1)
+      - [**USING THE build\_ef5\_container.sh SCRIPT**](#using-the-build_ef5_containersh-script)
+    - [Running the EF5 container image](#running-the-ef5-container-image-1)
+      - [**USING THE run\_ef5\_container.sh SCRIPT**](#using-the-run_ef5_containersh-script)
+  - [Linux](#linux)
+    - [Building the EF5 container image](#building-the-ef5-container-image-2)
+      - [**USING THE build\_ef5\_container.sh SCRIPT**](#using-the-build_ef5_containersh-script-1)
+    - [Running the EF5 container image](#running-the-ef5-container-image-2)
+      - [**USING THE run\_ef5\_container.sh SCRIPT**](#using-the-run_ef5_containersh-script-1)
+- [Troubleshooting](#troubleshooting)
+  - [Docker Installation Troubleshooting](#docker-installation-troubleshooting)
+  - [Windows Installation](#windows-installation)
+  - [Windows Subsystem for Linux (WSL) Error](#windows-subsystem-for-linux-wsl-error)
+- [About EF5](#about-ef5)
+  - [Learn More](#learn-more)
+  - [Contributors](#contributors)
+
 ## General Information
 
 This project builds a single, minimal, Docker Linux image based on [Alpine Linux 3.17](https://hub.docker.com/_/alpine). When the image is built, it will install the needed dependencies to build EF5, then proceed to clone EF5's source code from the main [EF5 repository from GitHub](https://github.com/HyDROSLab/EF5), and finally it will compile the EF5 executable.  
@@ -313,21 +347,97 @@ Note that multiple executions may produce multiple `container` items in your Doc
 
 ## Linux
 
+Once Docker Engine is installed, you now can proceed to [build the EF5 container](#building-the-ef5-container-image-2). Once the container's image has been built, you can proceed to [run the EF5 container](#running-the-ef5-container-image-2).
+
+> **NOTE**: you should keep in mind that by *just* running the EF5 container, without having customized your *configuration file*, and added some *data*, your model's execution won't produce any relevant *outputs*. Refer to the [EF5 manual](./docs/manual.html) for further information.
+
 ### Building the EF5 container image
+
+Before running the EF5 container, **its Docker image must be _built_**. Through this process, which is defined in the project's [Dockerfile](./docker/Dockerfile), the Docker Engine will:
+
+1. Download a [base Linux image](https://hub.docker.com/_/alpine) from [DockerHub](https://hub.docker.com/)
+2. Mount the following project folders so that our container can read and write data to and from the host machine:
+    - `./conf` -> `/conf`
+    - `./data` -> `/data`
+    - `./results` -> `/results`
+3. Update the software repositories on the container, and install the following packages:
+    - software building tools: `git`, `automake`, `autoconf`, and `build-base`
+    - EF5 dependencies like `libgeotiff-dev`
+4. Compile and install EF5 on the container using the `autoreconf` and `make` commands.
+
+#### **USING THE [build_ef5_container.sh](./docker/build_ef5_container.sh) SCRIPT**
+
+To build the EF5 container, use your **Terminal** to navigate to the project's main folder. The following code example assumes the project's folder will be located on your `~/Desktop/` folder, within your home directory:
+
+``` bash
+[~]$> cd ~/Desktop/ef5-dockerized-main/
+[ef5-dockerized]$>
+```
+
+Once there, navigate into the `docker/` folder:
+
+``` bash
+[ef5-dockerized]$> cd docker
+[ef5-dockerized/docker]$>
+```
+
+>**NOTE**: Note that there are two different build scripts: a *BASH script* (ending in `.sh`, meant to be used on Linux and MacOS systems), and a a *BATCH script* (ending in `.bat`, meant to be used on Windows systems)
+
+Once there, execute the *BASH FILE* named [build_ef5_container.sh](./docker/build_ef5_container.sh) to start the build process:
+
+``` bash
+[ef5-dockerized/docker]$> bash build_ef5_container.sh
+```
 
 ![Building the EF5 Docker Image - Linux](./docs/img/Linux/1-Build_ShellScript.png)  
 *Building the EF5 Docker Image under Linux*
 
+Assuming no errors are shown on the terminal window, the EF5 container image should have been built successfully.
+
+At this point, the EF5 Docker image has been build, and it is ready to be executed.
+
 ### Running the EF5 container image
+
+After [building the EF5 container image](#building-the-ef5-container-image-2), and assuming that:
+
+- you have valid input data and states in your `./data/` folder, and
+- you have a valid EF5 configuration file in you `./conf/` folder, **named** `control.txt`,
+
+you should be able to use the script `./run_ef5_container.sh` to execute your EF5 model simulation.
+
+#### **USING THE [run_ef5_container.sh](./run_ef5_container.sh) SCRIPT**
+
+To run the EF5 container, use your **Terminal** to navigate to the project's main folder. The following code example assumes the project's folder will be located on your `~/Desktop/` folder, within your home directory:
+
+``` bash
+[~]$> cd ~/Desktop/ef5-dockerized-main/
+[ef5-dockerized]$>
+```
+
+>**NOTE**: Note that there are two different run scripts: a *BASH script* (ending in `.sh`, meant to be used on Linux and MacOS systems), and a a *BATCH script* (ending in `.bat`, meant to be used on Windows systems)
+
+Once there, execute the *BASH FILE* named [run_ef5_container.sh](./docker/build_ef5_container.sh) to start the execution of the container:
+
+``` bash
+[ef5-dockerized]$> bash run_ef5_container.sh
+```
+
+Once the process starts, you will see some output showing the process as Docker runs the container. You will see some output showing the process as EF5 is being executed with your control file, parameters, data, and states:
 
 ![Running EF5 container 1 - Linux](./docs/img/Linux/2-Run_ShellScript1.png)  
 *Running the EF5 container under Linux #1*
 
+Once the EF5 execution is done, you will see the output cease to appear on the command line window:
+
 ![Running EF5 container 2 - Linux](./docs/img/Linux/3-Run_ShellScript2.png)  
 *Running the EF5 container under Linux*
 
+You can locate the resulting outputs from your EF5 execution under the [./results/](./results/) folder in the project's main directory:
+
 ![Results of EF5 execution - Linux](./docs/img/Linux/4-Run_Results.png)  
 *Results of EF5 execution under Linux*
+
+>**NOTE**: If you configured your EF5 control file to produce `states`, these files will be saved in the following sub-directory [./data/states/](./data/states/).
 
 # Troubleshooting
 ## Docker Installation Troubleshooting
