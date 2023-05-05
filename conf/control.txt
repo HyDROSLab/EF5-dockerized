@@ -23,11 +23,47 @@ NAME=PRECIPRATE.YYYYMMDD.HHUU00.gz
 [Gauge 0]
 cellx=3879
 celly=2542
-outputts=false
+outputts=true
 #basinarea=
 
 [Basin 0]
 gauge=0
+
+[SacParamSet EF5US]
+UZTWM_grid=/data/parameters/SAC/uztwm_usa.tif
+UZFWM_grid=/data/parameters/SAC/uzfwm_usa.tif
+UZK_grid=/data/parameters/SAC/uzk_usa.tif
+ZPERC_grid=/data/parameters/SAC/zperc_usa.tif
+REXP_grid=/data/parameters/SAC/rexp_usa.tif
+LZTWM_grid=/data/parameters/SAC/lztwm_usa.tif
+LZFSM_grid=/data/parameters/SAC/lzfsm_usa.tif
+LZFPM_grid=/data/parameters/SAC/lzfpm_usa.tif
+LZSK_grid=/data/parameters/SAC/lzsk_usa.tif
+LZPK_grid=/data/parameters/SAC/lzpk_usa.tif
+PFREE_grid=/data/parameters/SAC/pfree_usa.tif
+gauge=0
+UZTWM=1.0
+UZFWM=1.0
+UZK=1.0
+PCTIM=0.101
+ADIMP=0.10
+RIVA=1.001
+ZPERC=1.0
+REXP=1.0
+LZTWM=1.0
+LZFSM=1.0
+LZFPM=1.0
+LZSK=1.0
+LZPK=1.0
+PFREE=1.0
+SIDE=0.0
+RSERV=0.3
+ADIMC=1.0
+UZTWC=0.55
+UZFWC=0.14
+LZTWC=0.56
+LZFSC=0.11
+LZFPC=0.46
 
 [CrestParamSet EF5US]
 wm_grid=/data/parameters/CREST/wm_usa.tif
@@ -57,7 +93,7 @@ leaki=1.0
 th=10.0
 isu=00.0
 
-[Task Simulation]
+[Task CREST_Simulation]
 STYLE=simu
 MODEL=crest
 ROUTING=KW
@@ -76,5 +112,25 @@ TIME_BEGIN=20170519180000
 TIME_STATE=20170519190000
 TIME_END=20170519190000
 
+[Task SAC_Simulation]
+STYLE=simu
+MODEL=SAC
+ROUTING=KW
+BASIN=0
+PRECIP=MRMS
+PET=CLIMO
+OUTPUT=/results
+STATES=/data/states
+defaultparamsgauge=0
+PARAM_SET=EF5US
+ROUTING_PARAM_Set=EF5US
+output_grids=MAXUNITSTREAMFLOW|MAXSTREAMFLOW
+TIMESTEP=2u
+TIME_BEGIN=20170519180000
+#TIME_WARMEND=20170519180000
+TIME_STATE=20170519190000
+TIME_END=20170519190000
+
 [Execute]
-task=Simulation
+task=CREST_Simulation
+task=SAC_Simulation
