@@ -64,7 +64,7 @@ This will prompt your web browser to download a `.zip` file with the contents of
 ![Download the EF5-dockerized Zip File](./docs/img/3-Download_Zip.png)  
 *Downloading the EF5-dockerized Zip file*
 
->Note: your browser might have not have prompted you for a location where to save the file, and most likely you'll find it in your `Downloads` folder in your "home directory".
+>Note: your browser might have not have prompted you for a location where to save the file, and most likely you'll find it in your `Desktop` folder in your "home directory".
 
 To continue, please follow the instructions below, according to the Operating System you are running. Currently supported platforms are [Linux](#linux), [Windows](#windows) and [MacOS](#macos).
 
@@ -217,10 +217,10 @@ Before running the EF5 container, **its Docker image must be _built_**. Through 
 
 #### **USING THE [build_ef5_container.sh](./docker/build_ef5_container.sh) SCRIPT**
 
-To build the EF5 container, use your **Terminal** to navigate to the project's main folder. The following code example assumes the project's folder will be located on your `~/Downloads/` folder, within your home directory:
+To build the EF5 container, use your **Terminal** to navigate to the project's main folder. The following code example assumes the project's folder will be located on your `~/Desktop/` folder, within your home directory:
 
 ``` bash
-[~]$> cd ~/Downloads/ef5-dockerized-main/
+[~]$> cd ~/Desktop/ef5-dockerized-main/
 [ef5-dockerized]$>
 ```
 
@@ -264,10 +264,10 @@ you should be able to use the script `./run_ef5_container.sh` to execute your EF
 
 #### **USING THE [run_ef5_container.sh](./run_ef5_container.sh) SCRIPT**
 
-To run the EF5 container, use your **Terminal** to navigate to the project's main folder. The following code example assumes the project's folder will be located on your `~/Downloads/` folder, within your home directory:
+To run the EF5 container, use your **Terminal** to navigate to the project's main folder. The following code example assumes the project's folder will be located on your `~/Desktop/` folder, within your home directory:
 
 ``` bash
-[~]$> cd ~/Downloads/ef5-dockerized-main/
+[~]$> cd ~/Desktop/ef5-dockerized-main/
 [ef5-dockerized]$>
 ```
 
