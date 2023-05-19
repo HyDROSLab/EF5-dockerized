@@ -30,41 +30,49 @@ basinarea=421966.3
 lon=-84.093599999999995
 lat=36.951400000000000
 basinarea=139.341000000000008
+obs=/data/observations/usgs/Streamflow_Time_Series_CMS_UTC_USGS_03404900.csv
 
 [Gauge 03282040]
 lon=-83.810299999999998
 lat=37.500599999999999
 basinarea=200.205999999999989
+obs=/data/observations/usgs/Streamflow_Time_Series_CMS_UTC_USGS_03282040.csv
 
 [Gauge 03250190]
 lon=-83.831699999999998
 lat=38.023899999999998
 basinarea=218.854000000000013
+obs=/data/observations/usgs/Streamflow_Time_Series_CMS_UTC_USGS_03250190.csv
 
 [Gauge 03208950]
 lon=-82.438900000000004
 lat=37.123899999999999
 basinarea=172.234000000000009
+obs=/data/observations/usgs/Streamflow_Time_Series_CMS_UTC_USGS_03208950.csv
 
 [Gauge 03208500]
 lon=-82.295800000000000
 lat=37.206899999999997
 basinarea=740.736999999999966
+obs=/data/observations/usgs/Streamflow_Time_Series_CMS_UTC_USGS_03208500.csv
 
 [Gauge 03206600]
 lon=-82.296099999999996
 lat=38.017200000000003
 basinarea=99.714500000000001
+obs=/data/observations/usgs/Streamflow_Time_Series_CMS_UTC_USGS_03206600.csv
 
 [Gauge 03284525]
 lon=-84.411100000000005
 lat=37.988300000000002
 basinarea=2.486400000000000
+obs=/data/observations/usgs/Streamflow_Time_Series_CMS_UTC_USGS_03284525.csv
 
 [Gauge 03478400]
 lon=-82.133899999999997
 lat=36.631700000000002
 basinarea=69.670699999999997
+obs=/data/observations/usgs/Streamflow_Time_Series_CMS_UTC_USGS_03478400.csv
 
 [Basin 0]
 gauge=0
