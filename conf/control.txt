@@ -1,89 +1,101 @@
 [Basic]
-DEM=/data/basic/dem_usa.tif
-DDM=/data/basic/fdir_usa.tif
-FAM=/data/basic/facc_usa.tif
+DEM=/data/basic/dem_KY.tif
+DDM=/data/basic/ddm_KY.tif
+FAM=/data/basic/fam_KY.tif
 PROJ=geographic
-ESRIDDM=true 
+ESRIDDM=true
 SelfFAM=false
 
 [PETForcing CLIMO]
 LOC=/data/pet/
 FREQ=1m
 UNIT=mm/d
-NAME=PET_MM_usa.tif
+NAME=PET_MM_KY.tif
 TYPE=TIF
 
 [PrecipForcing MRMS]
-TYPE=MRMS
+TYPE=TIF
 UNIT=mm/h
 FREQ=2u
 LOC=/data/precip/
-NAME=PRECIPRATE.YYYYMMDD.HHUU00.gz
+NAME=PrecipRate_00.00_YYYYMMDD-HHUU00.tif
 
 [Gauge 0]
-cellx=3879
-celly=2542
+lat=36.9883
+lon=-89.1326
 outputts=true
-#basinarea=
+basinarea=421966.3
+
+[Gauge 03404900]
+lon=-84.093599999999995
+lat=36.951400000000000
+basinarea=139.341000000000008
+
+[Gauge 03282040]
+lon=-83.810299999999998
+lat=37.500599999999999
+basinarea=200.205999999999989
+
+[Gauge 03250190]
+lon=-83.831699999999998
+lat=38.023899999999998
+basinarea=218.854000000000013
+
+[Gauge 03208950]
+lon=-82.438900000000004
+lat=37.123899999999999
+basinarea=172.234000000000009
+
+[Gauge 03208500]
+lon=-82.295800000000000
+lat=37.206899999999997
+basinarea=740.736999999999966
+
+[Gauge 03206600]
+lon=-82.296099999999996
+lat=38.017200000000003
+basinarea=99.714500000000001
+
+[Gauge 03284525]
+lon=-84.411100000000005
+lat=37.988300000000002
+basinarea=2.486400000000000
+
+[Gauge 03478400]
+lon=-82.133899999999997
+lat=36.631700000000002
+basinarea=69.670699999999997
 
 [Basin 0]
 gauge=0
+gauge=03404900
+gauge=03282040
+gauge=03250190
+gauge=03208950
+gauge=03208500
+gauge=03206600
+gauge=03284525
+gauge=03478400
 
-[SacParamSet EF5US]
-UZTWM_grid=/data/parameters/SAC/uztwm_usa.tif
-UZFWM_grid=/data/parameters/SAC/uzfwm_usa.tif
-UZK_grid=/data/parameters/SAC/uzk_usa.tif
-ZPERC_grid=/data/parameters/SAC/zperc_usa.tif
-REXP_grid=/data/parameters/SAC/rexp_usa.tif
-LZTWM_grid=/data/parameters/SAC/lztwm_usa.tif
-LZFSM_grid=/data/parameters/SAC/lzfsm_usa.tif
-LZFPM_grid=/data/parameters/SAC/lzfpm_usa.tif
-LZSK_grid=/data/parameters/SAC/lzsk_usa.tif
-LZPK_grid=/data/parameters/SAC/lzpk_usa.tif
-PFREE_grid=/data/parameters/SAC/pfree_usa.tif
-gauge=0
-UZTWM=1.0
-UZFWM=1.0
-UZK=1.0
-PCTIM=0.101
-ADIMP=0.10
-RIVA=1.001
-ZPERC=1.0
-REXP=1.0
-LZTWM=1.0
-LZFSM=1.0
-LZFPM=1.0
-LZSK=1.0
-LZPK=1.0
-PFREE=1.0
-SIDE=0.0
-RSERV=0.3
-ADIMC=1.0
-UZTWC=0.55
-UZFWC=0.14
-LZTWC=0.56
-LZFSC=0.11
-LZFPC=0.46
-
-[CrestParamSet EF5US]
-wm_grid=/data/parameters/CREST/wm_usa.tif
-im_grid=/data/parameters/CREST/im_usa.tif
-fc_grid=/data/parameters/CREST/ksat_usa.tif
-b_grid=/data/parameters/CREST/b_usa.tif
+[CrestParamSet EF5KY]
+wm_grid=/data/parameters/CREST/wm_KY.tif
+im_grid=/data/parameters/CREST/im_KY.tif
+fc_grid=/data/parameters/CREST/ksat_KY.tif
+b_grid=/data/parameters/CREST/b_KY.tif
 gauge=0
 wm=1.0
 b=1.0
-im=0.01 
+im=0.01
 ke=1.0
-fc=1.00 
+fc=1.00
 iwu=75.0
 
-[KWParamSet EF5US]
-under_grid=/data/parameters/KW/ksat_usa.tif
-leaki_grid=/data/parameters/KW/leaki_usa.tif
-alpha_grid=/data/parameters/KW/alpha_usa.tif
-beta_grid=/data/parameters/KW/beta_usa.tif
-alpha0_grid=/data/parameters/KW/alpha0_usa.tif
+[KWParamSet EF5KY]
+under_grid=/data/parameters/KW/ksat_KY.tif
+leaki_grid=/data/parameters/KW/leaki_KY.tif
+alpha_grid=/data/parameters/KW/alpha_KY.tif
+beta_grid=/data/parameters/KW/beta_KY.tif
+alpha0_grid=/data/parameters/KW/alpha0_KY.tif
 gauge=0
 alpha0=1.0
 alpha=1.0
@@ -103,34 +115,14 @@ PET=CLIMO
 OUTPUT=/results
 STATES=/data/states
 defaultparamsgauge=0
-PARAM_SET=EF5US
-ROUTING_PARAM_Set=EF5US
+PARAM_SET=EF5KY
+ROUTING_PARAM_Set=EF5KY
 output_grids=MAXUNITSTREAMFLOW|MAXSTREAMFLOW
 TIMESTEP=2u
-TIME_BEGIN=20170519180000
-#TIME_WARMEND=20170519180000
-TIME_STATE=20170519190000
-TIME_END=20170519190000
-
-[Task SAC_Simulation]
-STYLE=simu
-MODEL=SAC
-ROUTING=KW
-BASIN=0
-PRECIP=MRMS
-PET=CLIMO
-OUTPUT=/results
-STATES=/data/states
-defaultparamsgauge=0
-PARAM_SET=EF5US
-ROUTING_PARAM_Set=EF5US
-output_grids=MAXUNITSTREAMFLOW|MAXSTREAMFLOW
-TIMESTEP=2u
-TIME_BEGIN=20170519180000
-#TIME_WARMEND=20170519180000
-TIME_STATE=20170519190000
-TIME_END=20170519190000
+TIME_BEGIN=20220727120000
+#TIME_WARMEND=20220727120000
+#TIME_STATE=20220730120000
+TIME_END=20220730120000
 
 [Execute]
 task=CREST_Simulation
-task=SAC_Simulation
